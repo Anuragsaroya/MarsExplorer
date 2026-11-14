@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mars Explorer AI — NASA Space Apps Challenge 2026 Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: #151c28;
+      --border: #2a364f;
+      --primary: #ff5722;
+      --ice: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --safe: #4ade80;
+      --warn: #fbbf24;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 14, 20, 0.9);
+    }
+    .badge {
+      background: rgba(255, 87, 34, 0.15);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .slides-container {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1200px;
+      height: 85vh;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 48px;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-category {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .slide-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+    }
+    .slide-content { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .card {
+      background: rgba(11, 14, 20, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p, .card li { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    li::before { content: "• "; color: var(--primary); font-weight: bold; }
+    .table-custom { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .table-custom th, .table-custom td { padding: 10px 14px; text-align: left; border: 1px solid var(--border); }
+    .table-custom th { background: rgba(30, 40, 61, 0.8); color: var(--text); }
+    .table-custom td { color: var(--muted); }
+    footer {
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-primary { background: var(--primary); color: #fff; border: none; }
+    .btn-primary:hover { background: #e04a1b; color: #fff; }
+    .text-primary { color: var(--primary); }
+    .text-ice { color: var(--ice); }
+    .text-safe { color: var(--safe); }
+    .text-warn { color: var(--warn); }
+    @media print {
+      body { overflow: visible; height: auto; }
+      header, footer { display: none; }
+      .slide { display: flex !important; page-break-after: always; height: auto; max-width: 100%; box-shadow: none; border: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span class="badge">NASA SPACE APPS 2026</span>
+      <span style="font-weight: 700; font-size: 14px;">MARS EXPLORER AI — Team Astro Intel (Mohali, India)</span>
+    </div>
+    <div style="font-size: 12px; color: var(--muted);" id="slideIndicator">Slide 1 of 10</div>
+  </header>
+
+  <main class="slides-container">
+
+    <!-- SLIDE 1 -->
+    <section class="slide active">
+      <div style="margin-top: auto; margin-bottom: auto; text-align: left;">
+        <span class="badge" style="margin-bottom: 12px; display: inline-block;">NASA SPACE APPS CHALLENGE 2026 · MOHALI, INDIA</span>
+        <h1 style="font-size: 44px; font-weight: 800; color: var(--text); line-height: 1.1; margin-top: 10px;">
+          MARS EXPLORER <span class="text-primary">AI</span>
+        </h1>
+        <h2 style="font-size: 22px; color: var(--ice); margin-top: 10px; font-weight: 500;">
+          Interplanetary Survival Guide: Martian Map & Excursion Planner
+        </h2>
+        <p style="font-size: 15px; color: var(--muted); max-width: 800px; margin-top: 16px; line-height: 1.6;">
+          Turning NASA & ESA planetary remote sensing data into life-saving surface routes, water-ice discovery, and real-time astronaut EVA survival simulations.
+        </p>
+
+        <div class="grid-2" style="margin-top: 36px; max-width: 900px;">
+          <div class="card">
+            <h3 class="text-primary" style="font-size: 13px; text-transform: uppercase;">Challenge & Event Details</h3>
+            <p><strong>Challenge:</strong> Interplanetary Survival Guide: Martian Map</p>
+            <p><strong>Local Event:</strong> Mohali, Punjab, India</p>
+            <p><strong>Team Name:</strong> Astro Intel</p>
+            <p><strong>Live App:</strong> <a href="https://red-planet-iceways.lovable.app" target="_blank" style="color: var(--ice); text-decoration: none;">red-planet-iceways.lovable.app</a></p>
+          </div>
+          <div class="card">
+            <h3 class="text-ice" style="font-size: 13px; text-transform: uppercase;">Team Astro Intel Roster</h3>
+            <p><strong>• Anurag Saroya</strong> — Team Lead & Systems Architecture</p>
+            <p><strong>• Vivaan Panwar</strong> — Planetary Science & Remote Sensing</p>
+            <p><strong>• Anuradha Rao</strong> — GIS & Cartographic Visualization</p>
+            <p><strong>• Inder Singh</strong> — Pathfinding Algorithms & Optimization</p>
+            <p><strong>• Shreya Chaturvedi</strong> — UI/UX & Human Factors Engineering</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide">
+      <div class="slide-category">Operational Context</div>
+      <h2 class="slide-title">The Challenge: The Lethal Martian Frontier</h2>
+      <div class="grid-3" style="flex: 1;">
+        <div class="card" style="border-top: 3px solid var(--ice);">
+          <h3 class="text-ice">1. Critical Water Scarcity</h3>
+          <ul>
+            <li>Human survival requires native In-Situ Resource Utilization (ISRU).</li>
+            <li>Water produces breathable oxygen (2H₂O → 2H₂ + O₂) and return rocket fuel (CH₄).</li>
+            <li>Hauling water from Earth exceeds $100k/kg; finding shallow buried ice is life-or-death.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--primary);">
+          <h3 class="text-primary">2. Extreme Terrain & Cold</h3>
+          <ul>
+            <li>Steep crater scarps (>20°) cause fatal astronaut slips and suit tears.</li>
+            <li>Soft dust ripples trap rovers; hidden basalt scree prevents traverse.</li>
+            <li>Temperatures plunge to -125°C, causing catastrophic suit battery drain.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--warn);">
+          <h3 class="text-warn">3. Radiation & Return Limits</h3>
+          <ul>
+            <li>Mars lacks a global dipole magnetic field; surface GCR exposure reaches 0.65 mGy/day.</li>
+            <li>Astronauts have limited walking endurance and suit consumables.</li>
+            <li>Crews require a guaranteed 15% life-support reserve margin before returning.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide">
+      <div class="slide-category">System Architecture</div>
+      <h2 class="slide-title">The Solution: Mars Explorer AI</h2>
+      <div class="grid-2" style="flex: 1;">
+        <div class="card">
+          <h3 class="text-primary">Autonomous Mission Intelligence</h3>
+          <p style="margin-bottom: 16px;">
+            Mars Explorer AI transforms multi-mission planetary remote sensing data into an interactive, high-precision surface map. It equips astronauts and mission controllers to plan safe excursions and pinpoint water resources.
+          </p>
+          <ul>
+            <li><strong>8 Scientific Map Layers:</strong> Stackable and fader-controlled remote sensing.</li>
+            <li><strong>Subsurface Ice Pinpointing:</strong> Depth mapping and water liter yields per m³.</li>
+            <li><strong>Multi-Criteria A* Pathfinding:</strong> Shortest, Safest, Science, and Ice routes.</li>
+            <li><strong>Real-time EVA Simulator:</strong> Minute-by-minute consumables telemetry.</li>
+            <li><strong>Exportable Mission Plans:</strong> JSON for flight computers, Markdown briefs for crew.</li>
+          </ul>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="card" style="border-left: 3px solid var(--ice);">
+            <h3 class="text-ice">1. EXPLORE</h3>
+            <p>Zoom and pan 10 × 7 km landing ellipses with live Lat/Lon coordinate HUD and vector grid.</p>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--primary);">
+            <h3 class="text-primary">2. IDENTIFY</h3>
+            <p>Locate pure surface ice, shallow buried sheets (&lt;1 m), and hydrated clay mineral signatures.</p>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--safe);">
+            <h3 class="text-safe">3. NAVIGATE</h3>
+            <p>Pathfinding dynamically avoids &gt;14° slopes, soft sand dunes, and hazardous boulder fields.</p>
+          </div>
+          <div class="card" style="border-left: 3px solid var(--warn);">
+            <h3 class="text-warn">4. SURVIVE</h3>
+            <p>Strictly monitors metabolic O₂, battery heating, and triggers the 15% life-support abort threshold.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide">
+      <div class="slide-category">Data Provenance</div>
+      <h2 class="slide-title">Scientific Grounding: 15+ NASA & ESA Datasets</h2>
+      <div style="overflow-x: auto; flex: 1;">
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th>Instrument</th>
+              <th>Mission / Agency</th>
+              <th>Measured Parameter</th>
+              <th>Role in Mars Explorer AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-primary" style="font-weight: bold;">MOLA</td>
+              <td>Mars Global Surveyor (NASA)</td>
+              <td>Laser altimetry topography (0.5–1 km)</td>
+              <td>Digital elevation model & slope gradient calculations</td>
+            </tr>
+            <tr>
+              <td class="text-primary" style="font-weight: bold;">HiRISE & CTX</td>
+              <td>MRO (NASA / Univ of Arizona)</td>
+              <td>Visible imagery (0.25–6 m/px)</td>
+              <td>High-resolution optical basemaps & obstacle verification</td>
+            </tr>
+            <tr>
+              <td class="text-ice" style="font-weight: bold;">SWIM Synthesis</td>
+              <td>SHARAD + THEMIS + GRS (NASA/PSI)</td>
+              <td>Joint radar dielectric & neutron flux</td>
+              <td>Arcadia Planitia shallow buried ice depth (0.3–2 m)</td>
+            </tr>
+            <tr>
+              <td class="text-primary" style="font-weight: bold;">THEMIS</td>
+              <td>Mars Odyssey (NASA / ASU)</td>
+              <td>Thermal infrared (100 m/px)</td>
+              <td>Surface temperature gradients & suit battery heater load</td>
+            </tr>
+            <tr>
+              <td class="text-primary" style="font-weight: bold;">CRISM & OMEGA</td>
+              <td>MRO (NASA) & Mars Express (ESA)</td>
+              <td>Hyperspectral VNIR / SWIR reflectance</td>
+              <td>Hydrated smectite clays, carbonates, & olivine signatures</td>
+            </tr>
+            <tr>
+              <td class="text-warn" style="font-weight: bold;">MSL RAD</td>
+              <td>Curiosity Rover (NASA / SwRI)</td>
+              <td>Energetic particle radiation detector</td>
+              <td>Surface cosmic ray (GCR) cumulative radiation dose rates</td>
+            </tr>
+            <tr>
+              <td class="text-safe" style="font-weight: bold;">Perseverance</td>
+              <td>Mars 2020 (NASA JPL)</td>
+              <td>Mastcam-Z, SuperCam, PIXL, MEDA</td>
+              <td>Jezero Delta Front ground-truth traverse calibration</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide">
+      <div class="slide-category">Landing Sites</div>
+      <h2 class="slide-title">Three Diverse Martian Environments</h2>
+      <div class="grid-3" style="flex: 1;">
+        <div class="card" style="border-top: 3px solid var(--primary);">
+          <h3 class="text-primary">Jezero Crater</h3>
+          <p style="font-size: 11px; color: var(--muted); margin-bottom: 8px;">18.44° N, 77.45° E · Ancient Lakebed & Delta</p>
+          <p class="badge" style="margin-bottom: 12px; display: inline-block;">Bound Water in Clays</p>
+          <ul>
+            <li>River delta explored by NASA Perseverance rover.</li>
+            <li>No shallow ice at equator; water locked in hydrated smectite clays (~3–6% wt) extractable via heating.</li>
+            <li>Prime target for astrobiological biosignature research.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--ice);">
+          <h3 class="text-ice">Arcadia Planitia</h3>
+          <p style="font-size: 11px; color: var(--muted); margin-bottom: 8px;">46.20° N, 192.40° E · Shallow Ice Plains</p>
+          <p class="badge" style="margin-bottom: 12px; display: inline-block;">Sheet Ice 0.3–2 m Deep</p>
+          <ul>
+            <li>Smooth northern volcanic plains identified by SWIM project.</li>
+            <li>Massive sheet ice just beneath surface dust; easily accessible with hand drills.</li>
+            <li>Ideal human landing zone for drinking water and propellant ISRU.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--safe);">
+          <h3 class="text-safe">Korolev Crater</h3>
+          <p style="font-size: 11px; color: var(--muted); margin-bottom: 8px;">73.30° N, 164.60° E · Frozen Ice Lake</p>
+          <p class="badge" style="margin-bottom: 12px; display: inline-block;">1.8 km-Thick Pure Ice Dome</p>
+          <ul>
+            <li>82 km impact crater preserving ~2,200 km³ of pristine water ice.</li>
+            <li>Permanent cold-trap preserves clean surface ice year-round.</li>
+            <li>Extreme cold (-110°C) and slick ice require specialized spike boots.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide">
+      <div class="slide-category">Route Optimization</div>
+      <h2 class="slide-title">Multi-Criteria A* Pathfinding Engine</h2>
+      <div class="grid-2" style="flex: 1;">
+        <div class="card" style="border-left: 4px solid var(--safe);">
+          <h3 class="text-safe">🟢 Safest Route (Human-Rated)</h3>
+          <ul>
+            <li>Strictly restricts slopes to &lt;14°, penalizing dangerous 20°+ scarps.</li>
+            <li>Contours around loose sand dune fields to eliminate slipping and suit tears.</li>
+            <li>Maintains steady metabolic consumption and energy expenditure.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--text);">
+          <h3 style="color: var(--text);">⚪ Shortest Route (Direct Traverse)</h3>
+          <ul>
+            <li>Direct Euclidean distance minimization between Habitat and Target.</li>
+            <li>Highlights the high hazard penalty of cutting across 25°+ cliffs.</li>
+            <li>Demonstrates the vital difference between distance and survivability.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-left: 4px solid #c084fc;">
+          <h3 style="color: #c084fc;">🟣 Science Route (Sample Return)</h3>
+          <ul>
+            <li>Dynamically detours to intercept high-value geological waypoints.</li>
+            <li>Visits Belva crater rim, sedimentary mudstones, and olivine outcrops.</li>
+            <li>Maximizes sample diversity and mission scientific return per km.</li>
+          </ul>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--ice);">
+          <h3 class="text-ice">🔵 Ice / Water Route (ISRU Survey)</h3>
+          <ul>
+            <li>Weights the graph toward verified shallow ice and exposed ice scarps.</li>
+            <li>Maximizes time along extractable water-ice corridors.</li>
+            <li>Identifies prime hand-drill sites yielding &gt;700 L water/m³.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide">
+      <div class="slide-category">Marswalk Simulator</div>
+      <h2 class="slide-title">Astronaut Marswalk EVA Telemetry</h2>
+      <div class="grid-2" style="flex: 1;">
+        <div class="card">
+          <h3 class="text-primary">Life-Support Telemetry Tracking</h3>
+          <ul>
+            <li><strong>Metabolic O₂ Draw:</strong> Dynamic consumption calculated from walking speed, elevation gain, and suit payload.</li>
+            <li><strong>Thermal Battery Drain:</strong> Extreme Martian cold (-120°C) demands substantial heater power, depleting battery faster than O₂.</li>
+            <li><strong>Radiation Accumulator:</strong> Tracks cumulative GCR dose using MSL RAD data across open plateaus vs. shielded depressions.</li>
+          </ul>
+        </div>
+        <div class="card" style="background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.3);">
+          <h3 style="color: #ef4444;">THE 15% EMERGENCY ABORT THRESHOLD</h3>
+          <p style="margin-bottom: 16px;">
+            Astronaut safety requires an inviolable life-support buffer. Mars Explorer AI projects return reserves in real time.
+          </p>
+          <div style="background: rgba(220, 38, 38, 0.2); padding: 12px; border-radius: 6px; border-left: 3px solid #ef4444; margin-bottom: 14px;">
+            <p style="font-weight: bold; color: #fca5a5;">CRITICAL RULE: &lt;15% O₂ Reserve = IMMEDIATE ABORT</p>
+            <p style="font-size: 11px; color: var(--muted); margin-top: 4px;">One-way travel must not exceed 42% of suit capacity to guarantee a safe return.</p>
+          </div>
+          <p class="text-safe" style="font-weight: bold;">✔ Zero Astronaut Stranding: Excursion viability is verified before airlock egress.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide">
+      <div class="slide-category">AI Decision Support</div>
+      <h2 class="slide-title">Rule-Based Mission Intelligence & Export</h2>
+      <div class="grid-2" style="flex: 1;">
+        <div class="card">
+          <h3 class="text-safe">Mission Feasibility Score (0–100)</h3>
+          <p>
+            Automated multi-factor evaluation scoring slope safety, consumable margins, radiation exposure, and emergency return feasibility.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="text-warn">Environmental Risk Matrix</h3>
+          <p>
+            Real-time advisory detecting dangerous terrain: &gt;20° slopes (rope team needed), &lt;-80°C extreme cold, and high radiation terrain.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="text-ice">One-Click Flight JSON Export</h3>
+          <p>
+            Exports complete mission telemetry, waypoint coordinates, and safety constraints directly into rover and flight computers.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="text-primary">Formatted Markdown Briefing</h3>
+          <p>
+            Generates standardized mission briefings ready for astronaut wrist displays, mission logs, and EVA crew checklists.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide">
+      <div class="slide-category">Engineering Stack</div>
+      <h2 class="slide-title">Modern, Zero-Latency Full-Stack Architecture</h2>
+      <div class="grid-3" style="flex: 1;">
+        <div class="card">
+          <h3 class="text-primary">Client-Side Frontend</h3>
+          <ul>
+            <li>React 19 + TypeScript + TanStack Start.</li>
+            <li>High-performance Canvas and SVG rendering.</li>
+            <li>Smooth multi-touch pan & zoom with react-zoom-pan-pinch.</li>
+            <li>Tailwind CSS v4 & custom dark Mars HUD UI.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="text-ice">Planetary Engine</h3>
+          <ul>
+            <li>Real-time A* pathfinding over 7,000 navigation cells.</li>
+            <li>Calibrated against published NASA PDS distributions.</li>
+            <li>100% offline-capable: runs inside isolated habitats without Earth uplink.</li>
+            <li>Instant Areocentric Lat/Lon to UV projections.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="text-safe">Verification & Quality</h3>
+          <ul>
+            <li>14 automated unit tests passing (Vitest).</li>
+            <li>Zero-error strict TypeScript type checking.</li>
+            <li>Vite production build in &lt;1.1 seconds.</li>
+            <li>ESLint & Prettier compliant code standards.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 -->
+    <section class="slide">
+      <div class="slide-category">Summary & Credits</div>
+      <h2 class="slide-title">Team Astro Intel & Future Horizons</h2>
+      <div class="grid-2" style="flex: 1;">
+        <div class="card">
+          <h3 class="text-primary" style="margin-bottom: 12px;">Team Astro Intel</h3>
+          <p style="font-size: 11px; color: var(--muted); margin-bottom: 16px;">NASA Space Apps Challenge 2026 · Local Event: Mohali, India</p>
+          <p><strong>• Anurag Saroya</strong> — Team Lead & Space Systems Architecture</p>
+          <p><strong>• Vivaan Panwar</strong> — Planetary Science & Remote Sensing</p>
+          <p><strong>• Anuradha Rao</strong> — GIS & Cartographic Visualization</p>
+          <p><strong>• Inder Singh</strong> — Pathfinding Algorithms & Optimization</p>
+          <p><strong>• Shreya Chaturvedi</strong> — UI/UX & Human Factors Engineering</p>
+        </div>
+        <div class="card">
+          <h3 class="text-ice" style="margin-bottom: 12px;">Future Horizons</h3>
+          <ul>
+            <li><strong>Live Weather Feeds:</strong> Real-time atmospheric integration with Perseverance MEDA API.</li>
+            <li><strong>Multi-Crew Rover Convoys:</strong> Joint pedestrian and unpressurized rover excursions.</li>
+            <li><strong>Astronaut AR HUD:</strong> Export 3D terrain meshes into helmet heads-up displays.</li>
+          </ul>
+          <div style="margin-top: 24px; padding: 14px; background: rgba(30, 40, 61, 0.6); border: 1px solid var(--primary); border-radius: 6px;">
+            <p style="font-size: 11px; font-weight: bold; color: var(--primary);">EXPLORE LIVE PLATFORM:</p>
+            <a href="https://red-planet-iceways.lovable.app" target="_blank" style="font-size: 14px; font-weight: bold; color: var(--ice); text-decoration: none;">
+              https://red-planet-iceways.lovable.app
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn" onclick="prevSlide()">← Previous</button>
+      <button class="btn" onclick="nextSlide()">Next →</button>
+    </div>
+    <div style="font-size: 12px; color: var(--muted);">
+      Use <kbd style="background: var(--card); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border);">←</kbd> and <kbd style="background: var(--card); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border);">→</kbd> arrow keys to navigate · Press <kbd style="background: var(--card); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border);">Ctrl+P</kbd> to save as PDF
+    </div>
+    <div>
+      <button class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    let current = 0;
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      slides[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      indicator.textContent = `Slide ${current + 1} of ${slides.length}`;
+    }
+
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+    });
+  </script>
+</body>
+</html>
