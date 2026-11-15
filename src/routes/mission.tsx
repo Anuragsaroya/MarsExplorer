@@ -5,6 +5,7 @@ import { MarsMap, type UV } from "@/components/mars/MarsMap";
 import { LayerPanel, type LayerState } from "@/components/mars/LayerPanel";
 import { RoutePanel } from "@/components/mars/RoutePanel";
 import { InspectorPanel } from "@/components/mars/InspectorPanel";
+import { MISAPanel } from "@/components/mars/MISAPanel";
 import { SimulatorPanel } from "@/components/mars/SimulatorPanel";
 import { MissionPlannerPanel } from "@/components/mars/MissionPlannerPanel";
 import {
@@ -226,7 +227,8 @@ function Console({ siteId }: { siteId: SiteId }) {
             <Loader2 className="mr-2 size-4 animate-spin" /> Building terrain model…
           </div>
         )}
-        <InspectorPanel report={report} pinned={!hover && !!inspect} />
+        <InspectorPanel report={report} pinned={!hover && !!inspect} siteId={siteId} />
+        <MISAPanel report={report} />
       </div>
 
       <div className="space-y-3 xl:col-start-1 xl:row-start-1">

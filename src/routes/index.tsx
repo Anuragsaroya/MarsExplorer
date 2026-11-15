@@ -16,6 +16,10 @@ import {
   Sparkles,
   Activity,
   CheckCircle2,
+  Brain,
+  ShieldCheck,
+  Pickaxe,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/mars-hero.jpg";
@@ -25,17 +29,20 @@ import { SITE_ORDER, SITES, type SiteId } from "@/lib/mars/sites";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mars Explorer AI — Safe Marswalks & Water Ice Finder" },
+      { title: "Mars Explorer AI — Explore Mars. Predict the Risks. Protect Human Life." },
       {
         name: "description",
         content:
-          "Team Astro Intel's Mars mission planner: layered NASA-style maps, hazard zones, safe route planning and a frozen water-ice finder for astronauts.",
+          "Team Astro Intel's autonomous astronaut survival platform: layered NASA maps, AI danger prediction, water-ice extraction planning, and safe Marswalk navigation.",
       },
-      { property: "og:title", content: "Mars Explorer AI — Safe Marswalks & Water Ice Finder" },
+      {
+        property: "og:title",
+        content: "Mars Explorer AI — Explore Mars. Predict the Risks. Protect Human Life.",
+      },
       {
         property: "og:description",
         content:
-          "Plan safer, science-rich Mars surface missions and find frozen water ice — by Team Astro Intel.",
+          "Five intelligent systems. One mission: Make Mars exploration safer. NASA Space Apps Challenge 2026 by Team Astro Intel.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -50,59 +57,59 @@ const ICE_BADGE: Record<SiteId, string> = {
   korolev: "1.8 km thick frozen ice lake",
 };
 
-const MODULES = [
+const INTELLIGENCE_SYSTEMS = [
   {
-    icon: Map,
-    title: "Interactive Mars map",
-    text: "Zoom and pan a 10 × 7 km site, with habitats, science targets and ice deposits marked.",
-  },
-  {
-    icon: Layers,
-    title: "8 data layers",
-    text: "Elevation, contours, temperature, minerals, radiation, science value, hazards and ice — stack and fade them.",
-  },
-  {
-    icon: Snowflake,
-    title: "Water-ice finder",
-    text: "See bare ice, ice under the dust and water locked in rock, with litres of water per cubic metre.",
+    icon: Database,
+    title: "Real Mars Data Explorer",
+    text: "Click any Martian coordinate to inspect NASA-calibrated elevation, thermal inertia, mineralogy, and radar ice signatures with data provenance.",
   },
   {
     icon: ShieldAlert,
-    title: "Hazard zones",
-    text: "Slopes, boulder fields, soft sand and slippery ice graded safe, caution or danger.",
+    title: "AI Hazard & Danger Prediction",
+    text: "Our AI explains WHY a location is hazardous — combining 20°+ slopes, boulder counts, extreme temperatures, and ionizing radiation into actionable alerts.",
+  },
+  {
+    icon: Snowflake,
+    title: "Smart Water Extraction Planner",
+    text: "Locate subsurface water ice, determine overburden depth, calculate required drilling energy (kWh), and estimate water and rocket fuel yields.",
   },
   {
     icon: RouteIcon,
-    title: "Route planner",
-    text: "Four routes side by side — shortest, safest, science and ice/water — with distance, time and risk.",
+    title: "Safe Route Optimization",
+    text: "Four multi-criteria A* pathfinding modes — shortest, safest (slope-managed), science-rich, and water-yield — with complete risk comparisons.",
+  },
+  {
+    icon: Brain,
+    title: "Mission Survival AI (MISA)",
+    text: "Mars Intelligent Survival Assistant evaluates EVA feasibility, tracks live suit consumables, and calculates automatic abort routes.",
   },
   {
     icon: Gauge,
-    title: "Marswalk simulator",
-    text: "Walk the route: live O₂, battery, radiation, hazard alerts and an emergency return-to-base warning.",
+    title: "Marswalk EVA Simulator",
+    text: "Simulate field excursions with real-time metabolic O₂ draw, suit battery heating loads, cumulative radiation dosing, and safe return boundaries.",
   },
 ];
 
-const WORKFLOW_STEPS = [
+const AI_DECISION_STEPS = [
   {
     num: "01",
-    title: "Select Landing Site",
-    desc: "Choose between Jezero's delta clays, Arcadia's buried ice sheets, or Korolev's glacier.",
+    title: "Planetary Surface Analysis",
+    desc: "MOLA laser altimetry + HiRISE rock statistics calculate precise slope gradients, terrain roughness, and physical obstacles across the landing ellipse.",
   },
   {
     num: "02",
-    title: "Inspect Planetary Layers",
-    desc: "Stack MOLA elevation, THEMIS thermal inertia, GRS neutron hydrogen, and CRISM minerals.",
+    title: "Ice Resource Pinpointing",
+    desc: "SWIM multi-radar synthesis + Odyssey GRS neutron hydrogen measurements detect shallow buried ice sheets and evaluate extraction accessibility.",
   },
   {
     num: "03",
-    title: "Calculate Multi-Criteria Routes",
-    desc: "A* engine evaluates shortest, safest (slope-managed), high-science, and water-yield paths.",
+    title: "Synergistic Risk Modeling",
+    desc: "Our AI computes composite hazard vectors: steep slopes combined with sub-zero extremes accelerate astronaut fatigue and trigger danger alerts.",
   },
   {
     num: "04",
-    title: "Simulate Marswalk EVA",
-    desc: "Track real-time O₂ draw, battery heating, radiation accumulation, and the 15% abort margin.",
+    title: "Trajectory & Consumable Balancing",
+    desc: "A* engine plans optimal traverse paths ensuring the crew maintains a 15% emergency oxygen reserve at every waypoint along the Martian traverse.",
   },
 ];
 
@@ -152,29 +159,29 @@ function Index() {
           height={1088}
         />
         <div className="absolute inset-0 -z-10 bg-hero-fade" />
-        <div className="mx-auto flex min-h-[78vh] max-w-[1600px] flex-col justify-end px-4 pb-16 pt-32">
+        <div className="mx-auto flex min-h-[82vh] max-w-[1600px] flex-col justify-end px-4 pb-16 pt-32">
           <div className="flex flex-wrap items-center gap-2">
             <p className="hud-label text-foreground/80">
-              NASA Space Apps 2026 · Interplanetary Survival Guide
+              NASA Space Apps Challenge 2026 · Interplanetary Survival Guide
             </p>
             <span className="rounded bg-primary/20 px-2 py-0.5 font-mono text-[10px] text-primary">
-              Team Astro Intel
+              Team Astro Intel · Mohali, India
             </span>
           </div>
 
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.05] md:text-6xl">
-            Walk Mars safely. <span className="text-ice">Find the water.</span>
+          <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-[1.05] md:text-6xl lg:text-7xl">
+            Explore Mars. Predict the Risks. <span className="text-ice">Protect Human Life.</span>
           </h1>
-          <p className="mt-4 max-w-xl text-base text-foreground/85 md:text-lg">
-            Mars Explorer AI transforms orbital and rover data into an astronaut survival guide:
-            where it is safe to walk, what is worth sampling, and where frozen ice can sustain human
-            life.
+          <p className="mt-4 max-w-2xl text-base text-foreground/85 md:text-xl">
+            Five intelligent systems. One mission: Make Mars exploration safer. Mars Explorer AI
+            combines real NASA planetary datasets with predictive decision intelligence to guide
+            astronaut surface excursions and locate life-sustaining water ice.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="shadow-glow">
               <Link to="/mission">
-                Open mission console <ArrowRight />
+                Launch Mission Console <ArrowRight className="ml-1.5 size-4" />
               </Link>
             </Button>
             <Button
@@ -183,8 +190,8 @@ function Index() {
               variant="outline"
               className="border-ice/60 bg-background/40 text-ice hover:bg-ice/10 hover:text-ice"
             >
-              <Link to="/mission" search={{ site: "korolev" }}>
-                <Snowflake /> Explore the ice lake
+              <Link to="/mission" search={{ site: "arcadia" }}>
+                <Snowflake className="mr-1.5 size-4" /> Explore Arcadia Water Ice
               </Link>
             </Button>
           </div>
@@ -195,10 +202,10 @@ function Index() {
       <section className="border-y border-border bg-card">
         <dl className="mx-auto grid max-w-[1600px] grid-cols-2 gap-px px-4 md:grid-cols-4">
           {[
-            ["3", "exploration sites"],
-            ["8", "scientific map layers"],
-            ["4", "route optimization modes"],
-            ["< 1 m", "to shallow ice at Arcadia"],
+            ["5", "Intelligent Systems"],
+            ["15+", "NASA/ESA Datasets"],
+            ["4", "A* Route Optimization Modes"],
+            ["< 1 m", "Ice Depth at Arcadia Planitia"],
           ].map(([v, l]) => (
             <div key={l} className="py-6">
               <dt className="font-display text-3xl font-semibold text-primary">{v}</dt>
@@ -208,21 +215,51 @@ function Index() {
         </dl>
       </section>
 
-      {/* How It Works Workflow */}
-      <section className="border-b border-border bg-background py-16">
+      {/* Five Intelligence Systems Section */}
+      <section className="border-b border-border bg-background py-20">
+        <div className="mx-auto max-w-[1600px] px-4">
+          <div className="flex items-center gap-2">
+            <Brain className="size-4 text-primary" />
+            <p className="hud-label text-primary">Mission Architecture</p>
+          </div>
+          <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
+            Five Intelligent Systems for Martian Surface Survival
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
+            A comprehensive suite of planetary exploration tools designed for astronaut safety,
+            resource extraction, and scientific return.
+          </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {INTELLIGENCE_SYSTEMS.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="hud-panel p-5 transition-colors hover:border-primary/60">
+                <Icon className="size-5 text-primary" />
+                <h3 className="mt-3 font-semibold text-foreground">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How Our AI Makes Decisions Section */}
+      <section className="border-b border-border bg-card/40 py-20">
         <div className="mx-auto max-w-[1600px] px-4">
           <div className="flex items-center gap-2">
             <Sparkles className="size-4 text-primary" />
-            <p className="hud-label text-primary">Mission Workflow</p>
+            <p className="hud-label text-primary">Autonomous Decision Pipeline</p>
           </div>
-          <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
-            How Mars Explorer AI Guides Astronaut Surface Excursions
-          </h2>
+          <h2 className="mt-2 text-3xl font-semibold md:text-4xl">How Our AI Makes Decisions</h2>
+          <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
+            From raw orbital telemetry to astronaut life-support advisories — our autonomous
+            pipeline translates planetary data into tactical mission intelligence.
+          </p>
+
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {WORKFLOW_STEPS.map((s) => (
+            {AI_DECISION_STEPS.map((s) => (
               <div
                 key={s.num}
-                className="relative rounded-lg border border-border bg-card/60 p-5 transition-colors hover:border-primary/50"
+                className="relative rounded-lg border border-border bg-card/80 p-5 transition-colors hover:border-primary/50"
               >
                 <span className="font-mono text-2xl font-bold text-primary/40">{s.num}</span>
                 <h3 className="mt-2 text-base font-semibold text-foreground">{s.title}</h3>
@@ -230,26 +267,81 @@ function Index() {
               </div>
             ))}
           </div>
+
+          {/* Interactive AI Decision Demo Card */}
+          <div className="mt-8 rounded-lg border border-primary/40 bg-secondary/30 p-5">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/50 pb-3">
+              <span className="flex items-center gap-2 font-display text-sm font-semibold text-foreground">
+                <Brain className="size-4 text-primary" />
+                MISA Decision Demonstration: Arcadia Planitia Coordinates [39.3° N, 189.7° E]
+              </span>
+              <span className="rounded bg-safe/20 px-2 py-0.5 font-mono text-[10px] font-bold text-safe">
+                MISSION ADVISORY: PROCEED (WATER HARVEST NOMINAL)
+              </span>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 font-mono text-xs">
+              <div className="rounded border border-border/60 bg-background/50 p-3">
+                <span className="text-[10px] text-muted-foreground">Water Ice Probability</span>
+                <p className="mt-1 text-sm font-bold text-ice">95% (0.4m depth)</p>
+                <p className="mt-0.5 text-[10px] text-muted-foreground">
+                  SWIM v3 shallow radar return
+                </p>
+              </div>
+              <div className="rounded border border-border/60 bg-background/50 p-3">
+                <span className="text-[10px] text-muted-foreground">AI Danger Prediction</span>
+                <p className="mt-1 text-sm font-bold text-safe">Low Risk (4.2° slope)</p>
+                <p className="mt-0.5 text-[10px] text-muted-foreground">
+                  Flat plains, smooth regolith
+                </p>
+              </div>
+              <div className="rounded border border-border/60 bg-background/50 p-3">
+                <span className="text-[10px] text-muted-foreground">Extraction Requirements</span>
+                <p className="mt-1 text-sm font-bold text-primary">1.8 kWh (Hand Auger)</p>
+                <p className="mt-0.5 text-[10px] text-muted-foreground">
+                  Yield: ~412 L water / m³ ground
+                </p>
+              </div>
+              <div className="rounded border border-border/60 bg-background/50 p-3">
+                <span className="text-[10px] text-muted-foreground">Safe Return Margin</span>
+                <p className="mt-1 text-sm font-bold text-safe">42% O₂ Reserve</p>
+                <p className="mt-0.5 text-[10px] text-muted-foreground">
+                  Far exceeds 15% abort threshold
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Ice Deep-Dive */}
       <section className="mx-auto grid max-w-[1600px] items-center gap-10 px-4 py-20 lg:grid-cols-2">
         <div>
-          <p className="hud-label text-ice">Frozen water ice</p>
+          <p className="hud-label text-ice">Subsurface Resource Extraction</p>
           <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
             Ice is the resource that makes Mars survivable
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Every cubic metre of pure ice melts into about 917 litres of water. Split it and you get
-            oxygen to breathe and hydrogen for rocket fuel. Our ice layer shows exactly where it is
-            — on the surface, a hand-drill away, or locked in rock.
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Every cubic metre of pure Martian water ice yields approximately 917 litres of
+            life-sustaining water. Split it through electrolysis and astronauts obtain breathing
+            oxygen and hydrogen to synthesize rocket propellant for the return voyage.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-3">
             {[
-              { icon: Droplets, t: "Drinking water", d: "Melt and filter ice cores" },
-              { icon: Beaker, t: "Oxygen", d: "Electrolysis: 2H₂O → 2H₂ + O₂" },
-              { icon: Flame, t: "Rocket fuel", d: "H₂ + CO₂ → methane for the ride home" },
+              {
+                icon: Droplets,
+                t: "Drinking Water",
+                d: "Melt, filter & mineralize for human consumption",
+              },
+              {
+                icon: Beaker,
+                t: "Breathing Oxygen",
+                d: "Electrolysis: 2H₂O → 2H₂ + O₂ for suit life support",
+              },
+              {
+                icon: Flame,
+                t: "Methane Fuel",
+                d: "H₂ + CO₂ → CH₄ via Sabatier reaction for return rocket",
+              },
             ].map(({ icon: Icon, t, d }) => (
               <li key={t} className="rounded-md border border-ice/30 bg-ice/5 p-3">
                 <Icon className="size-5 text-ice" />
@@ -271,7 +363,10 @@ function Index() {
 
       {/* Sites Section */}
       <section className="mx-auto max-w-[1600px] px-4 pb-20">
-        <h2 className="text-3xl font-semibold">Three sites, three kinds of water</h2>
+        <h2 className="text-3xl font-semibold">Three Sites, Three Scientific Horizons</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Each site represents a distinct planetary geological epoch and exploration challenge:
+        </p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {SITE_ORDER.map((id) => {
             const s = SITES[id];
@@ -291,7 +386,7 @@ function Index() {
                 </span>
                 <p className="mt-3 text-sm text-muted-foreground">{s.summary}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm text-primary">
-                  Plan a Marswalk{" "}
+                  Plan Mission{" "}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
@@ -310,12 +405,12 @@ function Index() {
                 <p className="hud-label text-primary">NASA & ESA Planetary Archives</p>
               </div>
               <h2 className="mt-2 text-3xl font-semibold">
-                Grounded in Real Space Agency Datasets
+                Calibrated to Real Space Agency Telemetry
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
                 Mars Explorer AI calibrates its surface hazards, thermal models, mineral signatures,
-                and subsurface ice distributions using instruments from NASA, ESA, and the SWIM
-                project.
+                and subsurface ice distributions using published science data from NASA, ESA, and
+                the Planetary Science Institute.
               </p>
             </div>
             <Button
@@ -346,34 +441,39 @@ function Index() {
         </div>
       </section>
 
-      {/* Feature Modules Section */}
-      <section className="border-t border-border bg-grid">
-        <div className="mx-auto max-w-[1600px] px-4 py-20">
-          <h2 className="text-3xl font-semibold">What the mission console does</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {MODULES.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="hud-panel p-5">
-                <Icon className="size-5 text-primary" />
-                <h3 className="mt-3 font-semibold">{title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button asChild size="lg">
+      {/* Bottom CTA */}
+      <section className="border-t border-border bg-grid py-16">
+        <div className="mx-auto max-w-[1600px] px-4 text-center">
+          <h2 className="text-3xl font-bold">Ready to Plan the Next Giant Leap?</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Activate the interactive mission console, inspect all 8 data layers, and calculate safe
+            astronaut walking routes.
+          </p>
+          <div className="mt-6 flex justify-center gap-3">
+            <Button asChild size="lg" className="shadow-glow">
               <Link to="/mission">
-                Start planning <ArrowRight />
+                Enter Mission Console <ArrowRight className="ml-1.5 size-4" />
               </Link>
             </Button>
-            <Link
-              to="/data"
-              className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-            >
-              See the NASA datasets behind each layer
-            </Link>
           </div>
         </div>
       </section>
+
+      {/* Footer Disclaimer */}
+      <footer className="border-t border-border py-6 bg-card/30">
+        <div className="mx-auto max-w-[1600px] px-4 text-center text-xs text-muted-foreground">
+          <p>
+            NASA Space Apps Challenge 2026 · Challenge: Interplanetary Survival Guide: Martian Map
+          </p>
+          <p className="mt-1">
+            Team <span className="text-foreground font-semibold">Astro Intel</span> (Mohali, India):
+            Anurag Saroya, Vivaan Panwar, Anuradha Rao, Inder Singh, Shreya Chaturvedi.
+          </p>
+          <p className="mt-1 text-[11px] opacity-75">
+            Independent competition entry — not officially affiliated with NASA or ESA.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
