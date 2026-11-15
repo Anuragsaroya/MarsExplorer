@@ -1,6 +1,6 @@
 # Mars Explorer AI — Interplanetary Survival Guide: Martian Map
 **NASA Space Apps Challenge 2026** · Team Astro Intel  
-**Live reference**: [red-planet-iceways.lovable.app](https://red-planet-iceways.lovable.app)
+**Live reference**:  https://mars-explorer-ebon.vercel.app/
 
 ---
 
